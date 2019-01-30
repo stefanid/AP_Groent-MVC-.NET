@@ -1,0 +1,83 @@
+﻿@model ASPAPMVC.Models.RecievedOrderLine
+
+@{
+    ViewBag.Title = "ReceivedLine";
+}
+
+<h2>ReceivedLine</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>RecievedOrderLine</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.iOrderLine_UID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.iOrderLine_UID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">LotNr</label>
+            @Html.EditorFor(model => model.iOrderLine_DeliveryLotNr, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.iOrderLine_DeliveryLotNr, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Received Netto</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.iOrderLine_RecivedNetto, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.iOrderLine_RecivedNetto, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Received Brutto</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.iOrderLine_RecivedBrutto, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.iOrderLine_RecivedBrutto, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Pallets</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.iOrderLine_Pallets, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.iOrderLine_Pallets, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Colli</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.iOrderLine_Colli, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.iOrderLine_Colli, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Temperature</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.iOrderLine_Temperature, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.iOrderLine_Temperature, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Overview")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<ASPAPMVC.Models.OrderLine>
+
+@{
+    ViewBag.Title = "Overview";
+}
+
+<h2>Ordered Order Lines</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Order ID
+        </th>
+        <th>
+            LotNr
+        </th>
+        <th>
+            Product Name
+        </th>
+        <th>
+            Variation Name
+        </th>
+        <th>
+            Pallets
+        </th>
+        <th>
+            Box Type
+        </th>
+        <th>
+            Ordered Netto
+        </th>
+        <th>
+            Ordered Brutto
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.iOrder_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.iOrderLine_DeliveryLotNr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductVariation_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.iOrderLine_Pallets)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BoxType_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.iOrderLine_OrderNetto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.iOrderLine_OrderBrutto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { iOrderLine_UID = item.iOrderLine_UID })
+
+        </td>
+    </tr>
+    }
+
+</table>
+<div>
+    @Html.ActionLink("Back to List", "Overview", "Order")
+</div>

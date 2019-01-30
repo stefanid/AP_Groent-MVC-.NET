@@ -1,0 +1,101 @@
+﻿@model ASPAPMVC.Models.Order
+
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create New Order</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+   
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Suppliers</label>
+        <div class="col-md-10">
+
+            @Html.DropDownList("Supplier", (IEnumerable<SelectListItem>)ViewBag.Supplier, new { @class = "form-control" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2"> Order ID</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.iOrder_ID, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.iOrder_ID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Order Reference</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.iOrder_SupplierRef, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.iOrder_SupplierRef, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Delivery Date</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.StringDeliveryDate, new { htmlAttributes = new { @class = "form-control date-picker" } })
+            @Html.ValidationMessageFor(model => model.StringDeliveryDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Shipping Status</label>
+        <div class="col-md-10">
+
+            @Html.DropDownList("ShippingStatus", (IEnumerable<SelectListItem>)ViewBag.ShippingStatus, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Organic</label>
+        <div class="col-md-10">
+            @Html.CheckBoxFor(model => model.Organic, new { htmlAttributes = new { @class = "form-control", Name = "Organic" } })
+
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+    <div>
+        @Html.ActionLink("Back to List", "Overview")
+    </div>
+</div>
+}
+
+
+
+@section Scripts {
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- jQuery UI CSS Reference -->
+<script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+<!-- Required jQuery and jQuery UI Javascript references -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script type="text/javascript">
+        $(function () {
+            // This will make every element with the class "date-picker" into a DatePicker element
+            $(".date-picker").datepicker({ dateFormat: 'dd/mm/yy' });
+        })
+</script>
+}

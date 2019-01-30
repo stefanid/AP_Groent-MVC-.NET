@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ASPAPMVC.Models.Order>
+
+@{
+    ViewBag.Title = "Today's Orders";
+}
+
+<h2>Today's Orders</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Supplier Name
+        </th>
+        <th>
+            Order Id
+        </th>
+        <th>
+            Order Status
+        </th>
+        <th>
+            Order Ref
+        </th>
+        <th>
+            Order Date
+        </th>
+        <th>
+            Delivery Date
+        <th>
+            Date Created
+        </th>
+        <th>
+            Organic
+        </th>
+        <th>
+            Shipping Status
+        </th>
+        <th>
+            Order Status
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Supplier_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.iOrder_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.iOrder_SupplierRef)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StringOrderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StringDeliveryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StringCreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StringifyOrganic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { Order_UID = item.iOrder_UID }) |
+            @Html.ActionLink("Details", "Details", new { Order_UID = item.iOrder_UID })
+        </td>
+    </tr>
+}
+
+</table>

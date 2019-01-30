@@ -1,0 +1,98 @@
+﻿@model ASPAPMVC.Models.OrderLine
+
+@{
+    ViewBag.Title = "Create";
+    var data = (ASPAPMVC.Models.OrderLine)ViewData["specificOrder"];
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label class="control-label col-md-2">Order ID</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => data.iOrder_ID, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.iOrder_ID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">LotNr</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.iOrderLine_DeliveryLotNr, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.iOrderLine_DeliveryLotNr, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Product and Product Variation</label>
+        <div class="col-md-10">
+
+            @Html.DropDownList("PpvList", (IEnumerable<SelectListItem>)ViewBag.PpvList, new { @class = "form-control" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Boxtype</label>
+        <div class="col-md-10">
+
+            @Html.DropDownList("Boxtype", (IEnumerable<SelectListItem>)ViewBag.Boxes, new { @class = "form-control" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Weight Netto</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.iOrderLine_OrderNetto, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.iOrderLine_OrderNetto, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Weight Brutto</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.iOrderLine_OrderBrutto, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.iOrderLine_OrderBrutto, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Pallets</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.iOrderLine_Pallets, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.iOrderLine_Pallets, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Organic</label>
+        <div class="col-md-10">
+            @Html.CheckBoxFor(model => model.Organic, new { htmlAttributes = new { @class = "form-control", Name = "Organic" } })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Overview")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

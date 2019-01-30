@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ASPAPMVC.Models.Supplier>
+
+@{
+    ViewBag.Title = "Overview";
+}
+
+<h2>Suppliers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>       
+        <th>
+            Supplier Name
+        </th>
+        <th>
+            Country Name
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>      
+        <td>
+            @Html.DisplayFor(modelItem => item.Supplier_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country_Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { Supplier_UID = item.Supplier_UID})
+
+        </td>
+    </tr>
+}
+
+</table>

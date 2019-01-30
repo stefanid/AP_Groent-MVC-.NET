@@ -1,0 +1,104 @@
+﻿@model ASPAPMVC.Models.RecievedOrderLine
+
+@{
+    ViewBag.Title = "ReceivedOrderLineControl";
+}
+
+<h2>ReceivedOrderLineControl</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>RecievedOrderLine</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        <div class="form-group">
+            <label class = "control-label col-md-2"> Lot Nr</label>
+           
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.iOrderLine_DeliveryLotNr, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.iOrderLine_DeliveryLotNr, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2"> Size</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.iOrderLine_ErrSize, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.iOrderLine_ErrSize, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2"> Form</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.iOrderLine_ErrForm, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.iOrderLine_ErrForm, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2"> Color </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.iOrderLine_ErrColor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.iOrderLine_ErrColor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2"> Insect Damage </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.iOrderLine_InsectDamage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.iOrderLine_InsectDamage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2"> Fungi Damage </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.iOrderLine_FungiDamage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.iOrderLine_FungiDamage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2"> Physical Damage </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.iOrderLine_PhysicalDamage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.iOrderLine_PhysicalDamage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Organic</label>
+            <div class="col-md-10">
+                @Html.CheckBoxFor(model => model.Organic, new { htmlAttributes = new { @class = "form-control", Name = "Organic" } })
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2"> Note </label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.iOrderLine_Note, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.iOrderLine_Note, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
